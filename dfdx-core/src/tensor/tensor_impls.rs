@@ -169,6 +169,27 @@ impl<S: Shape, E: Clone, D: Storage<E>, T> SplitTape for Tensor<S, E, D, T> {
     }
 }
 
+pub trait CloneNoTape {
+    type Tape;
+    type NoTape: Clone + PutTape<Self::Tape, Output = Self>;
+    fn clone_no_tape(&self) -> Self::NoTape;
+}
+
+impl<S: Shape, E: Clone, D: Storage<E>, T> CloneNoTape for Tensor<S, E, D, T> {
+    type Tape = T;
+    type NoTape = Tensor<S, E, D>;
+    fn clone_no_tape(&self) -> Self::NoTape {
+        Tensor {
+            id: self.id,
+            data: self.data.clone(),
+            shape: self.shape,
+            strides: self.strides,
+            device: self.device.clone(),
+            tape: NoneTape,
+        }
+    }
+}
+
 /// Clones self and inserts a new empty tape into the clone
 pub trait WithEmptyTape {
     /// Clones self and inserts a new empty tape into the clone

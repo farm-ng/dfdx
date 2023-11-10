@@ -176,7 +176,7 @@ pub use storage_traits::{AsArray, CopySlice, TensorFrom, TensorFromVec, TensorTo
 pub use storage_traits::{Cache, RandomU64, Storage, Synchronize};
 pub use storage_traits::{OnesTensor, SampleTensor, TriangleTensor, ZerosTensor};
 
-pub use tensor_impls::{PutTape, SplitTape, Tensor, Trace, WithEmptyTape};
+pub use tensor_impls::{PutTape, SplitTape, Tensor, Trace, WithEmptyTape, CloneNoTape};
 pub use tensor_impls::{Tensor0D, Tensor1D, Tensor2D, Tensor3D, Tensor4D, Tensor5D, Tensor6D};
 
 pub(crate) use unique_id::unique_id;

@@ -154,6 +154,8 @@ mod accurate_gelu;
 mod adam;
 mod add;
 mod attention_reshape;
+mod atan2;
+mod atan;
 pub(crate) mod axpy;
 mod bce;
 mod boolean;
@@ -211,6 +213,8 @@ mod upscale2d;
 mod var_to;
 
 pub use abs::abs;
+pub use atan::{atan};
+pub use atan2::{atan2,TryAtan2};
 pub use accurate_gelu::accurate_gelu;
 pub use adam::AdamConfig;
 pub use add::{add, TryAdd};
